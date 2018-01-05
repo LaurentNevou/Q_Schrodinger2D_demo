@@ -55,17 +55,16 @@ NG=NGx*NGy;
 %%%%%%%%%%%%%%%%%%%%%%% Building Hamiltonien %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-idx_x = reshape(1:NGx, [1 NGx ]);
-idx_x = repmat(idx_x, [NGy 1 ]);
+idx_x = repmat((1:NGx), [NGy 1 ]);
 idx_x = idx_x(:);
 
-idx_y = reshape(1:NGy, [NGy 1 ]);
-idx_y = repmat(idx_y, [1 NGx]);
+idx_y = repmat((1:NGy)', [1 NGx]);
 idx_y = idx_y(:);
 
-
-idx_X = bsxfun(@minus, idx_x, idx_x') + NGx;
-idx_Y = bsxfun(@minus, idx_y, idx_y') + NGy;
+idx_X = (idx_x-idx_x') + NGx;
+idx_Y = (idx_y-idx_y') + NGy;
+%idx_X = (repmat(idx_x,[1 NG])-repmat(idx_x',[NG 1])) + NGx;
+%idx_Y = (repmat(idx_y,[1 NG])-repmat(idx_y',[NG 1])) + NGy;
 
 idx = sub2ind(size(Vk), idx_Y(:), idx_X(:));
 idx = reshape(idx, [NG NG]);
@@ -75,7 +74,7 @@ GY = diag(Gy(idx_y));
 
 D2 = GX.^2 + GY.^2 ;
 
-H(1:NG,1:NG) =  hbar^2/(2*me*Mass)*D2  +  Vk(idx)*e ;
+H =  hbar^2/(2*me*Mass)*D2  +  Vk(idx)*e ;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% Solving Hamiltonien %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,8 +97,8 @@ for j=1:n
 end
 
 % in Octave, the order of the eigen values are reversed...
-%psi=psi(:,:,end:-1:1);
-%E=E(end:-1:1);
+psi=psi(:,:,end:-1:1);
+E=E(end:-1:1);
 
 end
 
