@@ -97,8 +97,8 @@ for j=1:n
 end
 
 % in Octave, the order of the eigen values are reversed...
-psi=psi(:,:,end:-1:1);
-E=E(end:-1:1);
+%psi=psi(:,:,end:-1:1);
+%E=E(end:-1:1);
 
 end
 
