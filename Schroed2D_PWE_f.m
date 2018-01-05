@@ -61,10 +61,10 @@ idx_x = idx_x(:);
 idx_y = repmat((1:NGy)', [1 NGx]);
 idx_y = idx_y(:);
 
-idx_X = (idx_x-idx_x') + NGx;
-idx_Y = (idx_y-idx_y') + NGy;
-%idx_X = (repmat(idx_x,[1 NG])-repmat(idx_x',[NG 1])) + NGx;
-%idx_Y = (repmat(idx_y,[1 NG])-repmat(idx_y',[NG 1])) + NGy;
+%idx_X = (idx_x-idx_x') + NGx;
+%idx_Y = (idx_y-idx_y') + NGy;
+idx_X = (repmat(idx_x,[1 NG])-repmat(idx_x',[NG 1])) + NGx;
+idx_Y = (repmat(idx_y,[1 NG])-repmat(idx_y',[NG 1])) + NGy;
 
 idx = sub2ind(size(Vk), idx_Y(:), idx_X(:));
 idx = reshape(idx, [NG NG]);
