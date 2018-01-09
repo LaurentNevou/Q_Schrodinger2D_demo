@@ -20,9 +20,8 @@ NGy = 2*floor(NGy/2);           %% round to lower even number
 xx=linspace(x(1),x(end),Nx);
 yy=linspace(y(1),y(end),Ny);
 [XX,YY] = meshgrid(xx,yy);
-%size(V0)
+
 V=interp2(X,Y,V0,XX,YY);
-%size(V)
 
 dx=x(2)-x(1);
 dxx=xx(2)-xx(1);
