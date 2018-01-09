@@ -65,7 +65,7 @@ V0=(idx)*0 + (1-idx)*Vb ;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 V0=(Fx*X)+V0;        % adding the electric field Fx to the potential in the x-direction
-V0=(Fy*Y)+V0;        % adding the electric field Fx to the potential in the y-direction
+V0=(Fy*Y)+V0;        % adding the electric field Fy to the potential in the y-direction
 V0=V0-min(min(V0));
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
