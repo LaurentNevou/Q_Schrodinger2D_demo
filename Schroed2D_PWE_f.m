@@ -18,7 +18,7 @@ NGy = 2*floor(NGy/2);           %% round to lower even number
 
 [X,Y] = meshgrid(x,y);
 xx=linspace(x(1),x(end),Nx);
-yy=linspace(y(1),x(end),Ny);
+yy=linspace(y(1),y(end),Ny);
 [XX,YY] = meshgrid(xx,yy);
 %size(V0)
 V=interp2(X,Y,V0,XX,YY);
