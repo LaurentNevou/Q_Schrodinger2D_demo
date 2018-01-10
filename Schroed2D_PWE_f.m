@@ -94,7 +94,7 @@ for i=1:n
     PSI = reshape(psik(:,i),[NGy,NGx]);
     PSI = invFFT2D(PSI,Ny,Nx)/(dxx*dyy) ;
     psi_temp = interp2(XX,YY,PSI,X,Y);
-    psi(:,:,i) = psi_temp / sqrt( trapz( y' , trapz(x,real(psi_temp).^2 ,2) , 1 )  );  % normalisation of the wave function psi
+    psi(:,:,i) = psi_temp / sqrt( trapz( y' , trapz(x,abs(psi_temp).^2 ,2) , 1 )  );  % normalisation of the wave function psi
 end
 
 % in Octave, the order of the eigen values are reversed...
