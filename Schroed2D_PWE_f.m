@@ -61,10 +61,10 @@ idx_x = idx_x(:);
 idx_y = repmat((1:NGy)', [1 NGx]);
 idx_y = idx_y(:);
 
-idx_X = (idx_x-idx_x') + NGx;      %% work only in Octave
-idx_Y = (idx_y-idx_y') + NGy;      %% work only in Octave
-%idx_X = (repmat(idx_x,[1 NG])-repmat(idx_x',[NG 1])) + NGx;     %% work in Octave and Matlab
-%idx_Y = (repmat(idx_y,[1 NG])-repmat(idx_y',[NG 1])) + NGy;     %% work in Octave and Matlab
+%idx_X = (idx_x-idx_x') + NGx;      %% work only in Octave
+%idx_Y = (idx_y-idx_y') + NGy;      %% work only in Octave
+idx_X = (repmat(idx_x,[1 NG])-repmat(idx_x',[NG 1])) + NGx;     %% work in Octave and Matlab
+idx_Y = (repmat(idx_y,[1 NG])-repmat(idx_y',[NG 1])) + NGy;     %% work in Octave and Matlab
 
 idx = sub2ind(size(Vk), idx_Y(:), idx_X(:));
 idx = reshape(idx, [NG NG]);
