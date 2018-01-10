@@ -57,10 +57,8 @@ E = diag(Energy)/e;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 for i=1:n
-
-    psi(:,:,i)=reshape(PSI(:,i),Ny,Nx);
-    psi(:,:,i)=psi(:,:,i)/sqrt(   sum( sum(abs(psi(:,:,i)).^2) ) * dx(1,1) * dy(1,1)   );  % normalisation of the wave function psi
-
+    psi_temp=reshape(PSI(:,i),Ny,Nx);
+    psi(:,:,i) = psi_temp / sqrt( trapz( y' , trapz(x,real(psi_temp).^2 ,2) , 1 )  );  % normalisation of the wave function psi
 end
 
 psi=psi(:,:,end:-1:1);

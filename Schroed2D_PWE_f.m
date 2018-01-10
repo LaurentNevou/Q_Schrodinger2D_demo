@@ -20,8 +20,9 @@ NGy = 2*floor(NGy/2);           %% round to lower even number
 xx=linspace(x(1),x(end),Nx);
 yy=linspace(y(1),y(end),Ny);
 [XX,YY] = meshgrid(xx,yy);
-
+%size(V0)
 V=interp2(X,Y,V0,XX,YY);
+%size(V)
 
 dx=x(2)-x(1);
 dxx=xx(2)-xx(1);
@@ -60,10 +61,10 @@ idx_x = idx_x(:);
 idx_y = repmat((1:NGy)', [1 NGx]);
 idx_y = idx_y(:);
 
-%idx_X = (idx_x-idx_x') + NGx;      %% work only in Octave
-%idx_Y = (idx_y-idx_y') + NGy;      %% work only in Octave
-idx_X = (repmat(idx_x,[1 NG])-repmat(idx_x',[NG 1])) + NGx;     %% work in Octave and Matlab
-idx_Y = (repmat(idx_y,[1 NG])-repmat(idx_y',[NG 1])) + NGy;     %% work in Octave and Matlab
+idx_X = (idx_x-idx_x') + NGx;      %% work only in Octave
+idx_Y = (idx_y-idx_y') + NGy;      %% work only in Octave
+%idx_X = (repmat(idx_x,[1 NG])-repmat(idx_x',[NG 1])) + NGx;     %% work in Octave and Matlab
+%idx_Y = (repmat(idx_y,[1 NG])-repmat(idx_y',[NG 1])) + NGy;     %% work in Octave and Matlab
 
 idx = sub2ind(size(Vk), idx_Y(:), idx_X(:));
 idx = reshape(idx, [NG NG]);
@@ -89,10 +90,11 @@ E=real(E);
 %%%%%%%%%%%%%%%%% Transforming & Scaling the waves functions %%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-for j=1:n
-    PSI = reshape(psik(:,j),[NGy,NGx]);
+for i=1:n
+    PSI = reshape(psik(:,i),[NGy,NGx]);
     PSI = invFFT2D(PSI,Ny,Nx)/(dxx*dyy) ;
-    psi(:,:,j) = interp2(XX,YY,PSI,X,Y);
+    psi_temp = interp2(XX,YY,PSI,X,Y);
+    psi(:,:,i) = psi_temp / sqrt( trapz( y' , trapz(x,real(psi_temp).^2 ,2) , 1 )  );  % normalisation of the wave function psi
 end
 
 % in Octave, the order of the eigen values are reversed...
