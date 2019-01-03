@@ -5,7 +5,7 @@ It uses 2 different algorithms that can be switched ON/OFF:
 
 -> The FEM: Finite Elements Method
 
--> The PWE: Plane Wave Expansion method that sloves the equation in the Fourier space
+-> The PWE: Plane Wave Expansion method that solves the equation in the Fourier space
 
 Three different potentials are proposed:
 
