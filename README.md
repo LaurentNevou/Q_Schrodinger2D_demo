@@ -3,7 +3,7 @@ This code solves the time independent Schroedinger equation in 2D with a constan
 
 It uses 2 different algorithms that can be switched ON/OFF:
 
--> The FEM: Finite Elements Method
+-> The FDM: Finite Difference Method
 
 -> The PWE: Plane Wave Expansion method that solves the equation in the Fourier space
 
