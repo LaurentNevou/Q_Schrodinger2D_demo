@@ -1,4 +1,8 @@
 # Schroedinger2D_demo
+
+![image](https://user-images.githubusercontent.com/35040499/111983175-20228880-8b0a-11eb-8fa0-d2b1810162ff.png)
+
+
 This code solves the time independent Schroedinger equation in 2D with a constant mass.
 
 It uses 2 different algorithms that can be switched ON/OFF:
